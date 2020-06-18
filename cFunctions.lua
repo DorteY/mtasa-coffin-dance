@@ -7,21 +7,21 @@
 addEvent("Sync->Coffin->Object",true)
 addEventHandler("Sync->Coffin->Object",root,function(Ped)
 	SelectedPed=Ped
-	if(isElement(theCoffin))then
-		destroyElement(theCoffin)
+	if(isElement(Coffin))then
+		destroyElement(Coffin)
 	end
-	theCoffin=createObject(2896,871,-1102,25.25)
-	setElementCollisionsEnabled(theCoffin,false)
-	setElementDoubleSided(theCoffin,true)
+	Coffin=createObject(2896,871,-1102,25.25)
+	setElementCollisionsEnabled(Coffin,false)
+	setElementDoubleSided(Coffin,true)
 	
-	removeEventHandler("onClientRender",root,syncCoffigObject)
-	addEventHandler("onClientRender",root,syncCoffigObject)
+	removeEventHandler("onClientRender",root,syncCoffinObject)
+	addEventHandler("onClientRender",root,syncCoffinObject)
 end)
 
-function syncCoffigObject()
-	local x,y,z=getElementPosition(theCoffin)
+function syncCoffinObject()
+	local x,y,z=getElementPosition(Coffin)
 	local sx,sy,sz=getPedBonePosition(SelectedPed,32)
-	setElementPosition(theCoffin,x,y,sz+0.38)
+	setElementPosition(Coffin,x,y,sz+0.38)
 end
 
 
