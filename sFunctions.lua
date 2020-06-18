@@ -22,7 +22,7 @@ addEventHandler("onResourceStart",resourceRoot,function()
 			
 			setTimer(function()
 				setPedAnimation(Peds[i],"dancing","dan_left_a",-1,true,false,false)
-			end,8000,0)
+			end,6000,0)
 			
 			addEventHandler("onPlayerJoin",root,function()
 				for _,v in pairs(getElementsByType("player"))do

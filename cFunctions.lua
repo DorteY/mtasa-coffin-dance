@@ -16,6 +16,12 @@ addEventHandler("Sync->Coffin->Object",root,function(Ped)
 	
 	removeEventHandler("onClientRender",root,syncCoffinObject)
 	addEventHandler("onClientRender",root,syncCoffinObject)
+	
+	if(isElement(CoffinSound))then
+		destroyElement(CoffinSound)
+	end
+	CoffinSound=playSound3D(":"..getResourceName(getThisResource()).."/Files/Sounds/Music.mp3",871,-1102,25.25,true)
+	setSoundMaxDistance(CoffinSound,tonumber(20))
 end)
 
 function syncCoffinObject()
@@ -32,9 +38,9 @@ addEventHandler("onClientPedDamage",root,function()
 end)
 
 addEventHandler("onClientResourceStart",root,function()
-	TXD=engineLoadTXD("Files/Skins/213.txd")
+	TXD=engineLoadTXD(":"..getResourceName(getThisResource()).."/Files/Skins/213.txd")
 	engineImportTXD(TXD,213)
 	
-	DFF=engineLoadDFF("Files/Skins/213.dff")
+	DFF=engineLoadDFF(":"..getResourceName(getThisResource()).."/Files/Skins/213.dff")
 	engineReplaceModel(DFF,213)
 end)

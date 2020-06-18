@@ -1,8 +1,9 @@
 <meta>
-	<info author="DorteY" type="misc"/>
+	<info author="DorteY" type="script"/>
 	
 	<file src="Files/Skins/213.txd" />
 	<file src="Files/Skins/213.dff" />
+	<file src="Files/Sounds/Music.mp3" />
 	
 	<script src="cFunctions.lua" type="client" cache="false" />
 	<script src="sFunctions.lua" type="server" />
