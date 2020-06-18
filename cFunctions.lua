@@ -6,8 +6,8 @@
 
 local CoffinX,CoffinY,CoffinZ=871,-1102,25.25
 
-addEvent("Sync->Coffin->Object",true)
-addEventHandler("Sync->Coffin->Object",root,function(Ped)
+addEvent("Sync->Coffin->Stuff",true)
+addEventHandler("Sync->Coffin->Stuff",root,function(Ped)
 	SelectedPed=Ped
 	if(isElement(Coffin))then
 		destroyElement(Coffin)
