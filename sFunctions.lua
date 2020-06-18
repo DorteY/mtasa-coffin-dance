@@ -26,13 +26,13 @@ addEventHandler("onResourceStart",resourceRoot,function()
 			
 			addEventHandler("onPlayerJoin",root,function()
 				for _,v in pairs(getElementsByType("player"))do
-					triggerClientEvent(v,"Sync->Coffin->Object",v,Peds[i])
+					triggerClientEvent(v,"Sync->Coffin->Stuff",v,Peds[i])
 				end
 			end)
 			
 			setTimer(function()
 				for _,v in pairs(getElementsByType("player"))do
-					triggerClientEvent(v,"Sync->Coffin->Object",v,Peds[i])
+					triggerClientEvent(v,"Sync->Coffin->Stuff",v,Peds[i])
 				end
 			end,1000,1)
 		end
