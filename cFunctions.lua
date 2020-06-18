@@ -30,3 +30,11 @@ addEventHandler("onClientPedDamage",root,function()
 		cancelEvent()
 	end
 end)
+
+addEventHandler("onClientResourceStart",root,function()
+	TXD=engineLoadTXD("Files/Skins/213.txd")
+	engineImportTXD(TXD,213)
+	
+	DFF=engineLoadDFF("Files/Skins/213.dff")
+	engineReplaceModel(DFF,213)
+end)

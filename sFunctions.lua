@@ -16,7 +16,7 @@ local Peds={
 addEventHandler("onResourceStart",resourceRoot,function()
 	for i,v in pairs(Peds)do
 		if(#Peds>=1)then
-			Peds[i]=createPed(0,v[1],v[2],v[3],v[4])
+			Peds[i]=createPed(213,v[1],v[2],v[3],v[4])
 			
 			setElementData(Peds[i],"Ped->Damage",false)
 			
