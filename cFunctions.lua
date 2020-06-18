@@ -7,9 +7,9 @@
 local CoffinTable={
 	ObjectID=2896,
 	
-	CoffinX=871,
-	CoffinY=-1102,
-	CoffinZ=25.25,
+	X=871,
+	Y=-1102,
+	Z=25.25,
 	
 	Path={
 		Music=":"..getResourceName(getThisResource()).."/Files/Sounds/Music.mp3",
@@ -29,12 +29,12 @@ addEventHandler("Sync->Coffin->Stuff",root,function(Ped)
 		destroyElement(CoffinSound)
 	end
 	
-	Coffin=createObject(CoffinTable.ObjectID,CoffinTable.CoffinX,CoffinTable.CoffinY,CoffinTable.CoffinZ)
+	Coffin=createObject(CoffinTable.ObjectID,CoffinTable.X,CoffinTable.Y,CoffinTable.Z)
 	setElementCollisionsEnabled(Coffin,false)
 	setElementDoubleSided(Coffin,true)
 	
 	if(fileExists(CoffinTable.Path.Music))then
-		CoffinSound=playSound3D(CoffinTable.Path.Music,CoffinTable.CoffinX,CoffinTable.CoffinY,CoffinTable.CoffinZ,true)
+		CoffinSound=playSound3D(CoffinTable.Path.Music,CoffinTable.X,CoffinTable.Y,CoffinTable.Z,true)
 		setSoundMaxDistance(CoffinSound,tonumber(20))
 	end
 	
