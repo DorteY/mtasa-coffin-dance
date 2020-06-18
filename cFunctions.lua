@@ -4,32 +4,53 @@
 --\\-----------------------------------------------//
 
 
-local CoffinX,CoffinY,CoffinZ=871,-1102,25.25
+local CoffinTable={
+	ObjectID=2896,
+	
+	CoffinX=871,
+	CoffinY=-1102,
+	CoffinZ=25.25,
+	
+	Path={
+		Music=":"..getResourceName(getThisResource()).."/Files/Sounds/Music.mp3",
+		TXD=":"..getResourceName(getThisResource()).."/Files/Skins/213.txd",
+		DFF=":"..getResourceName(getThisResource()).."/Files/Skins/213.dff",
+	}
+}
 
 addEvent("Sync->Coffin->Stuff",true)
 addEventHandler("Sync->Coffin->Stuff",root,function(Ped)
 	SelectedPed=Ped
+	
 	if(isElement(Coffin))then
 		destroyElement(Coffin)
 	end
-	Coffin=createObject(2896,CoffinX,CoffinY,CoffinZ)
-	setElementCollisionsEnabled(Coffin,false)
-	setElementDoubleSided(Coffin,true)
-	
-	removeEventHandler("onClientRender",root,syncCoffinObject)
-	addEventHandler("onClientRender",root,syncCoffinObject)
-	
 	if(isElement(CoffinSound))then
 		destroyElement(CoffinSound)
 	end
-	CoffinSound=playSound3D(":"..getResourceName(getThisResource()).."/Files/Sounds/Music.mp3",CoffinX,CoffinY,CoffinZ,true)
-	setSoundMaxDistance(CoffinSound,tonumber(20))
+	
+	Coffin=createObject(CoffinTable.ObjectID,CoffinTable.CoffinX,CoffinTable.CoffinY,CoffinTable.CoffinZ)
+	setElementCollisionsEnabled(Coffin,false)
+	setElementDoubleSided(Coffin,true)
+	
+	if(fileExists(CoffinTable.Path.Music))then
+		CoffinSound=playSound3D(CoffinTable.Path.Music,CoffinTable.CoffinX,CoffinTable.CoffinY,CoffinTable.CoffinZ,true)
+		setSoundMaxDistance(CoffinSound,tonumber(20))
+	end
+	
+	removeEventHandler("onClientRender",root,syncCoffinObject)
+	addEventHandler("onClientRender",root,syncCoffinObject)
 end)
 
 function syncCoffinObject()
-	local x,y,z=getElementPosition(Coffin)
-	local sx,sy,sz=getPedBonePosition(SelectedPed,32)
-	setElementPosition(Coffin,x,y,sz+0.38)
+	if(isElement(SelectedPed)and isElement(Coffin))then
+		local x,y,z=getElementPosition(Coffin)
+		local sx,sy,sz=getPedBonePosition(SelectedPed,32)
+		
+		if(x and y and z and sz)then
+			setElementPosition(Coffin,x,y,sz+0.38)
+		end
+	end
 end
 
 
@@ -40,9 +61,13 @@ addEventHandler("onClientPedDamage",root,function()
 end)
 
 addEventHandler("onClientResourceStart",root,function()
-	TXD=engineLoadTXD(":"..getResourceName(getThisResource()).."/Files/Skins/213.txd")
-	engineImportTXD(TXD,213)
+	if(fileExists(CoffinTable.Path.TXD))then
+		TXD=engineLoadTXD(CoffinTable.Path.TXD)
+		engineImportTXD(TXD,213)
+	end
 	
-	DFF=engineLoadDFF(":"..getResourceName(getThisResource()).."/Files/Skins/213.dff")
-	engineReplaceModel(DFF,213)
+	if(fileExists(CoffinTable.Path.DFF))then
+		DFF=engineLoadDFF(CoffinTable.Path.DFF)
+		engineReplaceModel(DFF,213)
+	end
 end)
