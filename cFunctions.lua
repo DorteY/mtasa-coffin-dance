@@ -11,7 +11,7 @@ addEventHandler("Sync->Coffin->Object",root,function(Ped)
 		destroyElement(theCoffin)
 	end
 	theCoffin=createObject(2896,871,-1102,25.25)
-    setElementCollisionsEnabled(theCoffin,false)
+	setElementCollisionsEnabled(theCoffin,false)
 	setElementDoubleSided(theCoffin,true)
 	
 	removeEventHandler("onClientRender",root,syncCoffigObject)
