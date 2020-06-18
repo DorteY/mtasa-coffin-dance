@@ -4,13 +4,15 @@
 --\\-----------------------------------------------//
 
 
+local CoffinX,CoffinY,CoffinZ=871,-1102,25.25
+
 addEvent("Sync->Coffin->Object",true)
 addEventHandler("Sync->Coffin->Object",root,function(Ped)
 	SelectedPed=Ped
 	if(isElement(Coffin))then
 		destroyElement(Coffin)
 	end
-	Coffin=createObject(2896,871,-1102,25.25)
+	Coffin=createObject(2896,CoffinX,CoffinY,CoffinZ)
 	setElementCollisionsEnabled(Coffin,false)
 	setElementDoubleSided(Coffin,true)
 	
@@ -20,7 +22,7 @@ addEventHandler("Sync->Coffin->Object",root,function(Ped)
 	if(isElement(CoffinSound))then
 		destroyElement(CoffinSound)
 	end
-	CoffinSound=playSound3D(":"..getResourceName(getThisResource()).."/Files/Sounds/Music.mp3",871,-1102,25.25,true)
+	CoffinSound=playSound3D(":"..getResourceName(getThisResource()).."/Files/Sounds/Music.mp3",CoffinX,CoffinY,CoffinZ,true)
 	setSoundMaxDistance(CoffinSound,tonumber(20))
 end)
 
